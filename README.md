@@ -1,0 +1,2 @@
+# AwesomeCyan
+Awesome WM configs
