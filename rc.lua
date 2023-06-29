@@ -1,6 +1,5 @@
 -- Cyan Awesome config
---
---
+
 pcall(require, "luarocks.loader")
 
 local gears         = require("gears")
@@ -14,12 +13,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
                       require("awful.hotkeys_popup.keys")
 local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
 
--- }}}
-
 -- {{{ Error handling
-
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify {
         preset = naughty.config.presets.critical,
@@ -34,15 +28,12 @@ do
 
     awesome.connect_signal("debug::error", function (err)
         if in_error then return end
-
         in_error = true
-
         naughty.notify {
             preset = naughty.config.presets.critical,
             title = "Oops, an error happened!",
             text = tostring(err)
         }
-
         in_error = false
     end)
 end
@@ -408,7 +399,7 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "v", function () awful.spawn.with_shell("xsel -b | xsel") end,
               {description = "copy gtk to terminal", group = "hotkeys"}),
     -- Lock with i3lock
-    awful.key({ modkey,  "Shift" }, "l", function () awful.spawn.with_shell("lock.sh") end, 
+    awful.key({ modkey,  "Shift" }, "l", function () awful.spawn.with_shell("~/.config/awesome/lock.sh") end, 
               {description = "Lock the session", group = "Hotkeys"}),
     awful.key({ modkey,  "Shift" }, "s", function () awful.spawn.with_shell("shutter -s") end,
               {description = "Screenshot", group = "Hotkeys"}),
