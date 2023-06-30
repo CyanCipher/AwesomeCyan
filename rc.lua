@@ -627,5 +627,5 @@ beautiful.border_focus = '#00a6a0'
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("killall xautolock")
 awful.spawn.with_shell("setxkbmap -option caps:swapescape")
-awful.spawn.with_shell("xautolock -time 10 -locker lock.sh")
+awful.spawn.with_shell("xautolock -time 10 -locker ~/.config/awesome/lock.sh")
 awful.spawn.with_shell("shutter --min_at_startup --disable_systray")
