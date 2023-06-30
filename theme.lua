@@ -9,7 +9,6 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/"
-theme.wallpaper                                 = theme.confdir .. "/wall.png"
 theme.font                                      = "Terminus 8"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
@@ -203,13 +202,6 @@ function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
 
-    -- If wallpaper is a function, call it with the screen
-    local wallpaper = theme.wallpaper
-    if type(wallpaper) == "function" then
-        wallpaper = wallpaper(s)
-    end
-    gears.wallpaper.maximized(wallpaper, s, true)
-
     -- Tags
     awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
 
@@ -259,22 +251,6 @@ function theme.at_screen_connect(s)
             mytextclock,
         },
     }
-
-    -- Create the bottom wibox
---    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
---
---    -- Add widgets to the bottom wibox
---    s.mybottomwibox:setup {
---        layout = wibox.layout.align.horizontal,
---        { -- Left widgets
---            layout = wibox.layout.fixed.horizontal,
---        },
---        s.mytasklist, -- Middle widget
---        { -- Right widgets
---            layout = wibox.layout.fixed.horizontal,
---            s.mylayoutbox,
---        },
---    }
 end
 
 return theme
